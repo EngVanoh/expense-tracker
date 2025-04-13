@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+
 
 const ExpenseForm = ({ onAddExpense }) => {
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const ExpenseForm = ({ onAddExpense }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newExpense = { ...formData, id: uuidv4() };
+    const newExpense = { ...formData, id: Date.now().toString() };
     onAddExpense(newExpense);
     setFormData({ name: '', description: '', category: '', amount: '', date: new Date().toISOString().split('T')[0] });
   };
